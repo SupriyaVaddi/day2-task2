@@ -1,0 +1,69 @@
+create table tab
+(
+  day varchar(5),
+  sess int,
+  faculty varchar(10),
+  sem int,
+  room varchar(5),
+  subject varchar(10),
+  unique(day,sess,faculty),
+  unique(day,sess,sem),
+  unique(day,sess,room)
+);
+    
+
+ insert into tab values('mon',1,'john',7,'r1','java');//valid
+ insert into tab values('mon',1,'john',5,'r2','testing');//invalid
+ insert into tab values('mon',1,'cena',7,'r3','dbms');//invalid
+ insert into tab values('mon',1,'rock',4,'r1','ds');//invalid
+ insert into tab values('mon',1,'john',7,'r1','java');//invalid
+ insert into tab values('tue',1,'john',7,'r1','java');//valid
+ insert into tab values('mon',2,'john',7,'r1','java');//valid
+
+------------------------------------------------------------------------------------------------
+
+create table Employee
+(
+EmpFname varchar(20),
+EmpMName varchar(20),
+EmpLastname varchar(20),
+EmpAge int check(EmpAge between 1 and 49),
+EmpCity varchar(25) check(EmpCity LIKE 'B%'),
+EmpDesignation varchar(20) check(EmpDesignation Like ('%manager')),
+EmpId varchar(5),
+empDOB DATE,
+constraint pkid3 primary key(EmpId)
+);
+
+ insert into Employee values('a','b','cde',35,'Bangloore','salesmanager',104,'23-jan-1993');
+ insert into Employee values('m','n','opq',30,'Bhutan','sales',101,'3-feb-1998');
+ insert into Employee values('x','y','zab',40,'Bhutan','acc',105,'23-jun-1997');
+ insert into Employee values('s','t','uvw',26,'Bhopal','acc',103,'26-dec-1995');
+ insert into Employee values('p','q','rst',26,'Bajpur','acc',102,'29-july-1992');
+
+
+ select * from Employee;
+
+
+update-update Employee set EmpCity='Bangloore' where EmpId=102;
+
+delete-
+    delete from employee where empId=102;
+
+delete all and getback the records- 
+  commit;
+  delete from employee;
+  rollback;
+
+
+
+ select EmpFName,EmpMName,EmpLastName,to_char(EmpDOB,'dd-mm-yyyy') as EmpDOB from Employee;
+
+select substr(EmpFname,1,1) || '.' || substr(EmpMName,1,1) || '.' || EmpLastname from Employee;
+
+
+
+
+
+
+
